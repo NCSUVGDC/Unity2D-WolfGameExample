@@ -12,7 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("max horizontal move speed")] float maxMoveSpeed = 8;
     [SerializeField, Tooltip("the max vertical move speed")] float maxFallSpeed = 10;
     [SerializeField, Tooltip("The force applied during a jump")] float JumpForce = 10;
+    [SerializeField, Tooltip("The force applied during a dash")] float DashForce = 10;
     bool isGrounded = false;
+    bool AirJumpReady = false;
+    bool DashReady = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxMoveSpeed, maxMoveSpeed), Mathf.Clamp(rb.velocity.y, -maxFallSpeed, maxFallSpeed));
         Debug.Log(rb.velocity + ", " + maxMoveSpeed);
         isGrounded = Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 3));
-        Debug.Log(isGrounded);
+        if (isGrounded)
+        {
+            AirJumpReady = true;
+            DashReady = true;
+        }
 
     }
 
@@ -44,7 +51,22 @@ public class PlayerMovement : MonoBehaviour
         {
 
             rb.AddForce(new Vector2(0, 1) * JumpForce, ForceMode2D.Impulse);
+        } else if (AirJumpReady && ctx.started)
+        {
+            rb.AddForce(new Vector2(0, 1) * JumpForce, ForceMode2D.Impulse);
+            AirJumpReady = false;
         }
         Debug.Log("hello");
+    }
+
+    public void Dash(InputAction.CallbackContext ctx)
+    {
+        if (DashReady && ctx.started)
+        {
+            float XMovement = MovementInput.x;
+            rb.AddForce(new Vector2(XMovement, 0) * DashForce, ForceMode2D.Impulse);
+            DashReady = false;
+
+        }
     }
 }
