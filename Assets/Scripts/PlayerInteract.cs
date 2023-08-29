@@ -15,15 +15,15 @@ public class PlayerInteract : MonoBehaviour
     private float invincibleTimer = 0;
     private bool invincible = false;
 
-    private SpriteRenderer renderer;
+    private SpriteRenderer sprite;
     [SerializeField] private Color hurtColor;
     [SerializeField] private Color startColor;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
-        renderer = GetComponentInChildren<SpriteRenderer>();
-        renderer.color = startColor;
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite.color = startColor;
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class PlayerInteract : MonoBehaviour
             invincibleTimer -= Time.fixedDeltaTime;
             if(invincibleTimer <= 0){
                 invincible = false;
-                renderer.color = startColor;
+                sprite.color = startColor;
             }
         }
     }
@@ -60,7 +60,7 @@ public class PlayerInteract : MonoBehaviour
             Die();
         }
         invincibleTimer = invincibleTime;
-        renderer.color = hurtColor;
+        sprite.color = hurtColor;
     }
 
     public void CollectCoin(GameObject obj){

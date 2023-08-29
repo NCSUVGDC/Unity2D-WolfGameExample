@@ -20,15 +20,19 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 dist = player.transform.position - transform.position;
-        Vector2 dir = dist.normalized;
-
-        if (dist.y > 1 && Mathf.Abs(dist.x) < 3 && Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 6)))
+        if (player != null)
         {
-            Debug.Log("gaming!!!");
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-        }
 
-        rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+            Vector2 dist = player.transform.position - transform.position;
+            Vector2 dir = dist.normalized;
+
+            if (dist.y > 1 && Mathf.Abs(dist.x) < 3 && Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 6)))
+            {
+                Debug.Log("gaming!!!");
+                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            }
+
+            rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+        }
     }
 }
