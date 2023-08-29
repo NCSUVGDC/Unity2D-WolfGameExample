@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public MoneyText moneyText;
+    [SerializeField] private GameObject WinScreen;
+    [SerializeField] private GameObject LoseScreen;
     [SerializeField ]private int maxHealth = 3;
     private int health = 0;
     [SerializeField]private int money = 0;
@@ -68,10 +70,14 @@ public class PlayerInteract : MonoBehaviour
     }
 
     public void WinLevel(){
-
+        Time.timeScale = 0;
+        WinScreen.transform.SetParent(null);
+        WinScreen.SetActive(true);
     }
 
     public void Die(){
+        LoseScreen.transform.SetParent(null);
+        LoseScreen.SetActive(true);
         Destroy(gameObject);
     }
 }
