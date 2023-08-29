@@ -97,9 +97,10 @@ GameObject:
   - component: {fileID: 3572922653149832876}
   - component: {fileID: 3951909999342016811}
   - component: {fileID: 8160301001249266037}
+  - component: {fileID: 6091218642334408965}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,9 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0ed6d0ad3cd4744b76a8a0127652c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 100
+  MovementSpeed: 150
   maxMoveSpeed: 10
   maxFallSpeed: 10
+  JumpForce: 10
+  DashForce: 10
 --- !u!114 &3572922653149832876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +195,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f0c8c54a-c4e1-4445-a141-cb799f5a319f
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4641218218592816525}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 93c4422b-affc-4c24-b491-2ceae70c612a
+    m_ActionName: Player/Dash[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -259,3 +278,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6091218642334408965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028251034248688579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc24d1af6b5f8f14589ff4496d0e0a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  maxHealth: 3
+  money: 0
+  invincibleTime: 1
+  hurtColor: {r: 1, g: 0.032075405, b: 0.032075405, a: 0.61960787}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
