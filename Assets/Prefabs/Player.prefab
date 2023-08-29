@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3572922653149832876}
   - component: {fileID: 3951909999342016811}
   - component: {fileID: 8160301001249266037}
+  - component: {fileID: 6091218642334408965}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -277,3 +278,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6091218642334408965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028251034248688579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc24d1af6b5f8f14589ff4496d0e0a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  maxHealth: 3
+  money: 0
+  invincibleTime: 1
+  hurtColor: {r: 1, g: 0.032075405, b: 0.032075405, a: 0.61960787}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
