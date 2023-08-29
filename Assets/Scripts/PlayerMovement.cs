@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("standard movement speed")] float MovementSpeed = 5;
     [SerializeField, Tooltip("max horizontal move speed")] float maxMoveSpeed = 8;
     [SerializeField, Tooltip("the max vertical move speed")] float maxFallSpeed = 10;
+    [SerializeField, Tooltip("The force applied during a jump")] float JumpForce = 10;
     bool isGrounded = false;
 
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(MovementInput * MovementSpeed, ForceMode2D.Force);
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxMoveSpeed, maxMoveSpeed), Mathf.Clamp(rb.velocity.y, -maxFallSpeed, maxFallSpeed));
         Debug.Log(rb.velocity + ", " + maxMoveSpeed);
-        isGrounded = Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0));
+        isGrounded = Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 3));
         Debug.Log(isGrounded);
 
     }
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && ctx.started)
         {
 
-            rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, 1) * JumpForce, ForceMode2D.Impulse);
         }
         Debug.Log("hello");
     }
