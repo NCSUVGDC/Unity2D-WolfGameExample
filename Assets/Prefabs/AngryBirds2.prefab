@@ -103,7 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpSpeed: 0
-  attack: 1
+  ball: {fileID: 8899844144299064845, guid: 3db0f49ecefd4c64b91528a4cae25742, type: 3}
+  attack: 0
 --- !u!70 &3186488351814037684
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

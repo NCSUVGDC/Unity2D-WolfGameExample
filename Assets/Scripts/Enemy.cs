@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float jumpSpeed;
+    [SerializeField] GameObject ball;
 
     public bool attack;
 
@@ -50,6 +51,11 @@ public class Enemy : MonoBehaviour
     void Attack()
     {
         animator.SetTrigger("Attack");
+
+        Instantiate(ball, transform.position, transform.rotation);
+        ball.GetComponent<Ball>().SetDirection(animator.GetBool("FaceLeft") ? -1 : 1);
+        ball.GetComponent<Ball>().Go();
+
         attack = false;
     }
 }
