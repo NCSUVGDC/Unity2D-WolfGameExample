@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1064224170565632832}
   - component: {fileID: 3186488351814037684}
   - component: {fileID: 8933096620461322594}
+  - component: {fileID: 1652605786700921736}
   m_Layer: 6
   m_Name: AngryBirds2
   m_TagString: Untagged
@@ -77,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.05345905, b: 0.05345905, a: 1}
+  m_Sprite: {fileID: -807041555, guid: 8c9db027b0e06bc41b521c86ecdeb821, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 4, y: 4.054794}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,6 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jumpSpeed: 0
+  ball: {fileID: 8899844144299064845, guid: 3db0f49ecefd4c64b91528a4cae25742, type: 3}
+  attack: 0
 --- !u!70 &3186488351814037684
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,6 +167,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &1652605786700921736
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247127694623348318}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c240c0c2ac3c6be4e9155450ed90e17c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6259719387604545031
 GameObject:
   m_ObjectHideFlags: 0
