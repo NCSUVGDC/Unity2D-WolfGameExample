@@ -101,9 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f2ae583fede0b4f9aab1a4a9753bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpSpeed: 0
+  speed: 4
+  jumpSpeed: 6
   ball: {fileID: 8899844144299064845, guid: 3db0f49ecefd4c64b91528a4cae25742, type: 3}
+  walkRange: 15
+  attackRange: 50
   attack: 0
 --- !u!70 &3186488351814037684
 CapsuleCollider2D:

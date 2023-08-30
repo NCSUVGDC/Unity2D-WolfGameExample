@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float jumpSpeed;
     [SerializeField] GameObject ball;
+    [SerializeField] private float walkRange;
+    [SerializeField] private float attackRange;
+    private float timeSinceLastAttack = 0;
 
     public bool attack;
 
@@ -25,21 +28,33 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastAttack += Time.deltaTime;
         if (player != null)
         {
 
             Vector2 dist = player.transform.position - transform.position;
             Vector2 dir = dist.normalized;
-
-            if (dist.y > 1 && Mathf.Abs(dist.x) < 3 && Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 6)))
+            if (dist.magnitude < attackRange && timeSinceLastAttack > 2)
             {
-                Debug.Log("gaming!!!");
-                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+                attack = true;
+                timeSinceLastAttack = 0;
+            }
+            if (dist.magnitude > walkRange)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            } else
+            {
+                if (dist.y > 1 && Mathf.Abs(dist.x) < 3 && Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 6)))
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+                }
+
+                rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+
             }
 
-            rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
-
             animator.SetBool("FaceLeft", dist.x < 0);
+
         }
 
         animator.SetBool("Walking", rb.velocity.magnitude > 0);
@@ -52,9 +67,9 @@ public class Enemy : MonoBehaviour
     {
         animator.SetTrigger("Attack");
 
-        Instantiate(ball, transform.position, transform.rotation);
-        ball.GetComponent<Ball>().SetDirection(animator.GetBool("FaceLeft") ? -1 : 1);
-        ball.GetComponent<Ball>().Go();
+        GameObject ballInstance = Instantiate(ball, transform.position, transform.rotation);
+        ballInstance.GetComponent<Ball>().SetDirection(animator.GetBool("FaceLeft") ? -1 : 1);
+        ballInstance.GetComponent<Ball>().Go();
 
         attack = false;
     }

@@ -43,7 +43,13 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 3));
         if (isGrounded)
         {
+            rb.sharedMaterial.friction = 2;
+            rb.sharedMaterial = rb.sharedMaterial;
             AirJumpReady = true;
+        } else
+        {
+            rb.sharedMaterial.friction = 0;
+            rb.sharedMaterial = rb.sharedMaterial;
         }
 
         if (dashRefresh > 0)
