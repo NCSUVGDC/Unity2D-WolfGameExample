@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("the max vertical move speed")] float maxFallSpeed = 10;
     [SerializeField, Tooltip("The force applied during a jump")] float JumpForce = 10;
     [SerializeField, Tooltip("The force applied during a dash")] float DashForce = 10;
+    private Animator animator;
     bool isGrounded = false;
     bool AirJumpReady = false;
     bool DashReady = false;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponentInChildren<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +41,20 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 input = ctx.ReadValue<Vector2>();
         MovementInput.x = input.x;
+        if (Mathf.Abs(MovementInput.x) > 0)
+        {
+            animator.SetBool("Moving", true);
+            if (MovementInput.x > 0)
+            {
+                animator.SetBool("FacingRight", true);
+            } else
+            {
+                animator.SetBool("FacingRight", false);
+            }
+        } else
+        {
+            animator.SetBool("Moving", false);
+        }
         
     }
 

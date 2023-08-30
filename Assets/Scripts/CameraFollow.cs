@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (player != null)
         {
-            Vector3 newPosition = player.transform.position + new Vector3(0, 0, -10);
+            Vector3 newPosition = player.transform.position + new Vector3(0, .5f, -10);
             Debug.Log(newPosition);
             newPosition = new Vector3(Mathf.Clamp(newPosition.x, MinBounds.x, MaxBounds.x), Mathf.Clamp(newPosition.y, MinBounds.y, MaxBounds.y), newPosition.z);
             this.transform.position = Vector3.Lerp(this.transform.position, newPosition, .1f);
