@@ -163,6 +163,8 @@ MonoBehaviour:
   maxFallSpeed: 10
   JumpForce: 10
   DashForce: 10
+  DashDuration: 0.2
+  DashCooldown: 0.5
 --- !u!114 &3572922653149832876
 MonoBehaviour:
   m_ObjectHideFlags: 0
