@@ -7,14 +7,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float jumpSpeed;
 
+    public bool attack;
+
     private Rigidbody2D rb;
     private GameObject player;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponentInChildren<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +37,19 @@ public class Enemy : MonoBehaviour
             }
 
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+
+            animator.SetBool("FaceLeft", dist.x < 0);
         }
+
+        animator.SetBool("Walking", rb.velocity.magnitude > 0);
+        
+        if (attack)
+            Attack();
+    }
+
+    void Attack()
+    {
+        animator.SetTrigger("Attack");
+        attack = false;
     }
 }
