@@ -38,7 +38,6 @@ public class PlayerInteract : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
-        Debug.Log("Collision");
         GameObject other = col.gameObject;
         if(other.tag == "Damage"){
             Damage(other);
