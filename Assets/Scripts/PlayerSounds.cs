@@ -8,6 +8,7 @@ public class PlayerSounds : MonoBehaviour
     [SerializeField] private AudioSource deathAudioSource;
     [SerializeField] private AudioSource coinCollectAudioSource;
     [SerializeField] private AudioSource jumpAudioSource;
+    [SerializeField] private AudioSource winAudioSource;
 
 
     // private void Start() {
@@ -28,5 +29,9 @@ public class PlayerSounds : MonoBehaviour
 
     public void PlayJumpSound(){
         jumpAudioSource.Play();
+    }
+
+    public void PlayWinSound(){
+        winAudioSource.Play();
     }
 }
