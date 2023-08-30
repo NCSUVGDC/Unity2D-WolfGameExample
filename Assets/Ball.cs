@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    int direction;
-    bool moving;
-
-    private void Start()
-    {
-        direction = 1;
-        moving = false;
-    }
+    int direction = 1;
+    bool moving = false;
 
     public void SetDirection(int direction)
     { 
@@ -28,13 +22,17 @@ public class Ball : MonoBehaviour
     void Update()
     {
         if (moving)
-            transform.position = new Vector3(transform.position.x + direction * 0.1f, transform.position.y, transform.position.z); 
+        {
+            this.gameObject.transform.position = new Vector3(transform.position.x + direction * 7 * Time.deltaTime, transform.position.y, transform.position.z);
+            Debug.Log(transform.position);
+
+        }
     }
 
     IEnumerator Die()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
 
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
