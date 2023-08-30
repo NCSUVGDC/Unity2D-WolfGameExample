@@ -92,6 +92,6 @@ public class PlayerInteract : MonoBehaviour
         sprite.enabled = false;
         this.enabled=false;
         GetComponent<Collider2D>().enabled = false;
-        
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
     }
 }
