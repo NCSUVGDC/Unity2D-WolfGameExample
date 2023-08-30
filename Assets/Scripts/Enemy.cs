@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject ball;
     [SerializeField] private float walkRange;
     [SerializeField] private float attackRange;
+    [SerializeField] private EnemySounds soundsScript;
     private float timeSinceLastAttack = 0;
 
     public bool attack;
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponentInChildren<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        soundsScript = GetComponent<EnemySounds>();
     }
 
     // Update is called once per frame
@@ -65,12 +67,13 @@ public class Enemy : MonoBehaviour
 
     void Attack()
     {
+        soundsScript.PlayAttackSound();
         animator.SetTrigger("Attack");
 
         GameObject ballInstance = Instantiate(ball, transform.position, transform.rotation);
         ballInstance.GetComponent<Ball>().SetDirection(animator.GetBool("FaceLeft") ? -1 : 1);
         ballInstance.GetComponent<Ball>().Go();
-
+        
         attack = false;
     }
 }
