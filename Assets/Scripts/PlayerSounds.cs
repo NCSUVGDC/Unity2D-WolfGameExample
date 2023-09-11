@@ -34,4 +34,5 @@ public class PlayerSounds : MonoBehaviour
     public void PlayWinSound(){
         winAudioSource.Play();
     }
+
 }

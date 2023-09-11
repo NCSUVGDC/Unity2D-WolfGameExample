@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 463593481}
   - component: {fileID: 463593480}
   - component: {fileID: 463593479}
+  - component: {fileID: 463593482}
   m_Layer: 0
   m_Name: Ground (2)
   m_TagString: Untagged
@@ -674,12 +675,25 @@ Transform:
   m_GameObject: {fileID: 463593478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.47, y: 1.14, z: 0}
+  m_LocalPosition: {x: 52.2, y: 1.14, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463593482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463593478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3718d2e03479329458b7da60b54b1399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.05
 --- !u!1 &591287074
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +857,7 @@ Transform:
   m_GameObject: {fileID: 723822325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.23, y: 5.87, z: 0}
+  m_LocalPosition: {x: 92.75001, y: 5.87, z: 0}
   m_LocalScale: {x: 0.58, y: 0.58, z: 0.58}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1134,9 +1148,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3532938962167750142, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 91ffca37a8ba75d4bb8bc8ca6c6fc315, type: 3}
+    - target: {fileID: 3532938962167750142, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4028251034248688579, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904189398081933199, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3623cb8e144566445a628293ed51dc13, type: 3}
+    - target: {fileID: 8160301001249266037, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2054,7 +2084,7 @@ Transform:
   m_GameObject: {fileID: 1960564947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.49, y: 3.8500004, z: 0}
+  m_LocalPosition: {x: 89.01, y: 3.8500004, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
