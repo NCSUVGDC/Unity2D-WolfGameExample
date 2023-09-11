@@ -31,7 +31,6 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private void FixedUpdate() {
         if(invincibleTimer >0){
             invincibleTimer -= Time.fixedDeltaTime;
@@ -44,7 +43,26 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col) {
         GameObject other = col.gameObject;
-        if(other.tag == "Damage"){
+        switch (other.tag) {
+            case "Damage":
+                Damage(other);
+                break;
+            case "Coin":
+                CollectCoin(other);
+                break;
+            case "EndLevel":
+                WinLevel();
+                break;
+            case "EnemyHead":
+                Destroy(other.transform.root.gameObject);
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, 10);
+                money += 3;
+                moneyText.UpdatePoints(money);
+                break;
+        
+        }
+
+        if (other.tag == "Damage"){
             Damage(other);
         }
         else if(other.tag == "Coin"){
@@ -65,8 +83,12 @@ public class PlayerInteract : MonoBehaviour
         }
         else{
             soundsScript.PlayDamageSound();
+            Vector2 DamageForceVector = (this.transform.position - obj.transform.position).normalized * obj.GetComponent<harmful>().GetDamage() * 10;
+            DamageForceVector.y = 5;
+            this.GetComponent<Rigidbody2D>().AddForce(DamageForceVector, ForceMode2D.Impulse);
         }
         invincibleTimer = invincibleTime;
+        invincible = true;
         sprite.color = hurtColor;
 
     }

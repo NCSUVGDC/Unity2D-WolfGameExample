@@ -164,10 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0ed6d0ad3cd4744b76a8a0127652c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 10
+  MovementSpeed: 11
+  DashSpeed: 25
   maxFallSpeed: 10
-  JumpForce: 10
-  DashForce: 10
+  JumpForce: 15
   DashDuration: 0.2
   DashCooldown: 0.5
 --- !u!114 &3572922653149832876
@@ -257,7 +257,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 4028251034248688579}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: b98899f6e49048e4a8068e021882ca41, type: 2}
+  m_Material: {fileID: 6200000, guid: 1f7ff44921f48b945879733982232929, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -299,7 +299,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: 1f7ff44921f48b945879733982232929, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
