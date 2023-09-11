@@ -287,6 +287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AngryBirds2
       objectReference: {fileID: 0}
+    - target: {fileID: 4247127694623348318, guid: b5d9786e670ae1d4cacce2cdfbaa1c4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4870907524499457760, guid: b5d9786e670ae1d4cacce2cdfbaa1c4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.653492
@@ -1148,25 +1152,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3532938962167750142, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 91ffca37a8ba75d4bb8bc8ca6c6fc315, type: 3}
-    - target: {fileID: 3532938962167750142, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4028251034248688579, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6904189398081933199, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3623cb8e144566445a628293ed51dc13, type: 3}
-    - target: {fileID: 8160301001249266037, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
-      propertyPath: m_GravityScale
-      value: 2
+    - target: {fileID: 4641218218592816525, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
+      propertyPath: DashSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641218218592816525, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
+      propertyPath: MovementSpeed
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
