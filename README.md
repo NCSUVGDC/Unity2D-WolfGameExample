@@ -1,5 +1,5 @@
 # Unity2D-WolfGameExample
-This is a simple 2D platformer game designed as a base for VGDC members new to game development to work off of. 
+This is a simple 2D platformer game designed as a base for VGDC members new to game development to work off of. Runs on Unity 2022.3.8f1, but should be able to upgrade to newer versions.
 
 ![gif of Wolf Character wagging their tail](WolfGif.gif)
 
