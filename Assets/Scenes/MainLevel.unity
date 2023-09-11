@@ -287,10 +287,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AngryBirds2
       objectReference: {fileID: 0}
-    - target: {fileID: 4247127694623348318, guid: b5d9786e670ae1d4cacce2cdfbaa1c4a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4870907524499457760, guid: b5d9786e670ae1d4cacce2cdfbaa1c4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.653492
@@ -329,10 +325,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4870907524499457760, guid: b5d9786e670ae1d4cacce2cdfbaa1c4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6259719387604545031, guid: b5d9786e670ae1d4cacce2cdfbaa1c4a, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1155,14 +1147,6 @@ PrefabInstance:
     - target: {fileID: 4028251034248688579, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4641218218592816525, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
-      propertyPath: DashSpeed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4641218218592816525, guid: a91b8ef4c0246c24f8b1968353c5bedc, type: 3}
-      propertyPath: MovementSpeed
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
