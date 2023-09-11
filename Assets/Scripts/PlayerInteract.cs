@@ -61,16 +61,6 @@ public class PlayerInteract : MonoBehaviour
                 break;
         
         }
-
-        if (other.tag == "Damage"){
-            Damage(other);
-        }
-        else if(other.tag == "Coin"){
-            CollectCoin(other);
-        }
-        else if(other.tag == "EndLevel"){
-            WinLevel();
-        }
     }
 
     public void Damage(GameObject obj){

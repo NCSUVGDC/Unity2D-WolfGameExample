@@ -3,7 +3,7 @@ This is a simple 2D platformer game designed as a base for VGDC members new to g
 
 ![gif of Wolf Character wagging their tail](WolfGif.gif)
 
-Play the game [here]()
+Play the demo [here](https://vgdcncsu.itch.io/2d-platformer-demo-game)
 ## The Game Contains:
 
 * A simple platformer character
