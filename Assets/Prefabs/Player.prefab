@@ -164,8 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0ed6d0ad3cd4744b76a8a0127652c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 40
-  maxMoveSpeed: 10
+  MovementSpeed: 10
   maxFallSpeed: 10
   JumpForce: 10
   DashForce: 10
@@ -299,7 +298,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1.5
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 1f7ff44921f48b945879733982232929, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -326,6 +325,7 @@ MonoBehaviour:
   moneyText: {fileID: 5335834537932638732}
   WinScreen: {fileID: 1451218173432162713}
   LoseScreen: {fileID: 2244396142329006914}
+  soundsScript: {fileID: 0}
   maxHealth: 3
   money: 0
   invincibleTime: 1
@@ -550,8 +550,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 91ffca37a8ba75d4bb8bc8ca6c6fc315, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -646,7 +646,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3623cb8e144566445a628293ed51dc13, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
