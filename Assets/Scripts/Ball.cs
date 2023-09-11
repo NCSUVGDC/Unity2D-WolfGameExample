@@ -24,7 +24,7 @@ public class Ball : MonoBehaviour
         if (moving)
         {
             this.gameObject.transform.position = new Vector3(transform.position.x + direction * 7 * Time.deltaTime, transform.position.y, transform.position.z);
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
 
         }
     }
