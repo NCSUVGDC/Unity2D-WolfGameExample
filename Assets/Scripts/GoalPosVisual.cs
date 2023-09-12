@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 [ExecuteInEditMode]
+#endif
 public class GoalPosVisual : MonoBehaviour
 {
     [SerializeField, Tooltip("the moving platform that is going to move through this position")]
@@ -21,9 +22,10 @@ public class GoalPosVisual : MonoBehaviour
     }
 
     // Update is called once per frame
-    
+
     void Update()
     {
+#if UNITY_EDITOR
         if (EditorApplication.isPlaying)
         {
             return;
@@ -32,6 +34,7 @@ public class GoalPosVisual : MonoBehaviour
         {
             movingObject.UpdatePositions();
         }
+#endif
     }
 
     public void HideRenderers()
