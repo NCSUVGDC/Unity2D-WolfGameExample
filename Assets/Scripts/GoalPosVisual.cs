@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-#if UNITY_EDITOR
+
 [ExecuteInEditMode]
-#endif
 public class GoalPosVisual : MonoBehaviour
 {
     [SerializeField, Tooltip("the moving platform that is going to move through this position")]
@@ -14,7 +13,6 @@ public class GoalPosVisual : MonoBehaviour
     void Awake()
     {
         renderers = GetComponents<Renderer>();
- 
     }
     public void SetMovingObject(Moving_Platform mo)
     {
@@ -30,16 +28,16 @@ public class GoalPosVisual : MonoBehaviour
         {
             return;
         }
+#endif
         if (movingObject)
         {
             movingObject.UpdatePositions();
         }
-#endif
     }
 
     public void HideRenderers()
     {
-        foreach(Renderer renderer in renderers)
+        foreach (Renderer renderer in renderers)
         {
             renderer.enabled = false;
         }
