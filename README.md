@@ -13,9 +13,9 @@ Play the demo [here](https://vgdcncsu.itch.io/2d-platformer-demo-game)
 * obstacles
 * In game menus
 
-In the project there is a sample level that shows how all these different parts can be put together to make a game level. To make your own, you can create a new scene or duplicate the sample level. You can find prefabs, or premade objects, of all the objects you need to make a level in the Assets->Prefabs->Level Design folder.
+In the project there is a sample level that shows how all these different parts can be put together to make a game level. To make your own, you can create a new scene or duplicate the sample level. You can find prefabs, or premade objects, of everything you need to make a level in the Assets->Prefabs->Level Design folder.
 
-Make sure to drag a player in the scene, then feel free to add whatever else you want for your level!
+Start by dragging a player and camera into the scene, then add whatever you want to your level! You can create using the collection of objects we provided or add your own!
 
 ## Moving Forward
 Feel free to edit this project however you like, or even use it as a base for any of our VGDC game jams!
