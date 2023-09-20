@@ -13,7 +13,6 @@ public class GoalPosVisual : MonoBehaviour
     void Awake()
     {
         renderers = GetComponents<Renderer>();
- 
     }
     public void SetMovingObject(Moving_Platform mo)
     {
@@ -21,13 +20,15 @@ public class GoalPosVisual : MonoBehaviour
     }
 
     // Update is called once per frame
-    
+
     void Update()
     {
+#if UNITY_EDITOR
         if (EditorApplication.isPlaying)
         {
             return;
         }
+#endif
         if (movingObject)
         {
             movingObject.UpdatePositions();
@@ -36,7 +37,7 @@ public class GoalPosVisual : MonoBehaviour
 
     public void HideRenderers()
     {
-        foreach(Renderer renderer in renderers)
+        foreach (Renderer renderer in renderers)
         {
             renderer.enabled = false;
         }

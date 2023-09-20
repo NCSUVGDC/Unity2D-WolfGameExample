@@ -23,12 +23,18 @@ public class Moving_Platform : MonoBehaviour
         }
         else
         {
-            
-            currentGoal = goalPositions[0];
+            goalPositions = new List<Transform>();
+            for (int i = 0; i < goalObjects.Count; i++)
+            {
+                GameObject go = goalObjects[i];
+
+                goalPositions.Add(go.transform);
+            }
+            currentGoal = goalPositions[0]; // Getting error in build
             currentGoalIndex = 0;
             if (hidePathOnStartup)
             {
-                foreach(GameObject go in goalObjects)
+                foreach (GameObject go in goalObjects)
                 {
                     go.GetComponent<GoalPosVisual>().HideRenderers();
                 }
