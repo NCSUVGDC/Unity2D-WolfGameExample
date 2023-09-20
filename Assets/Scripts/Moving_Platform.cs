@@ -2,21 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEditor;
 
 public class Moving_Platform : MonoBehaviour
 {
     [SerializeField, Tooltip("The goal objects that this platform will move between, in order. \n The first position is the position the platform will start the game moving towards")] private List<GameObject> goalObjects = new List<GameObject>();
     [SerializeField, Tooltip("the speed at which this platform will move")] private float moveSpeed = 5;
     [SerializeField, Tooltip("If marked true, this platform's path will be hidden when the game starts")] private bool hidePathOnStartup = true;
+    [SerializeField, Tooltip("If marked true, this platform will snap to the first goal position when the game starts. Otherwise, it will simply move to the first position, then enter it's cycle")]private bool snapToFirstPosOnStartup = true;
     private List<Transform> goalPositions = new List<Transform>();
     //the current goal this platform is moving to
     [SerializeField]private Transform currentGoal;
     //the index of the current goal
     private int currentGoalIndex;
     private int prevGoalListLength = -1;
+    [Header("DO NOT Change these fields\nJust press the button below to add a new goal position to the moving platform")]
+    [SerializeField, Tooltip("the holder for all goal positions")]private Transform goalsHolder;
+    [SerializeField, Tooltip("the goal position prefab")]private GameObject goalPosPrefab;
+    //private LineRenderer startMoveLine;
+  
     // Start is called before the first frame update
     void Start()
     {
+
         if(goalObjects == null || goalObjects.Count == 0)
         {
             Debug.LogWarning("NO GOAL POSITIONS HAVE BEEN SET");
@@ -30,8 +38,12 @@ public class Moving_Platform : MonoBehaviour
 
                 goalPositions.Add(go.transform);
             }
+            
             currentGoal = goalPositions[0]; // Getting error in build
             currentGoalIndex = 0;
+            if(snapToFirstPosOnStartup){
+                transform.position = currentGoal.position;
+            }
             if (hidePathOnStartup)
             {
                 foreach (GameObject go in goalObjects)
@@ -60,7 +72,12 @@ public class Moving_Platform : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, currentGoal.position, moveSpeed * Time.fixedDeltaTime);
     }
 
-
+//          -----------------------------------------------------------------------------------------------------------------------------------
+//          ---If you are viewing this as part of the VGDC into to unity exercises, 
+//          ---we strongly suggest you avoid any parts of the script below this point unless you are very familiar with Unity and C# scripting
+//          ---This part of the script is somewhat complicated, and involves easily breakable code.
+//          ---edit at your own risk
+//          -----------------------------------------------------------------------------------------------------------------------------------
 
     /// <summary>
     /// Update the line path whenever the goal positions are updated
@@ -152,5 +169,19 @@ public class Moving_Platform : MonoBehaviour
         //update lines
         UpdatePositions();
         prevGoalListLength = goalObjects.Count;
+        
+    }
+
+    public void AddNewGoal(){
+        if(!goalPosPrefab){
+            Debug.LogError("Can't add goal pos because no goal position prefab is connected.\nPlease drag the prefab into the goalPosPrefab field");
+        }
+        if(!goalsHolder){
+            goalsHolder = transform.parent.GetChild(1);
+        }
+        GameObject obj = Instantiate(goalPosPrefab, goalsHolder);
+        Undo.RegisterCreatedObjectUndo(obj, "Create GameObject");
+        goalObjects.Add(obj);
+        //OnValidate();
     }
 }
