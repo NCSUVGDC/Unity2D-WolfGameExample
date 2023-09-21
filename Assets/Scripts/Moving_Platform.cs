@@ -31,6 +31,7 @@ public class Moving_Platform : MonoBehaviour
         }
         else
         {
+            Debug.Log(goalObjects.Count);
             goalPositions = new List<Transform>();
             for (int i = 0; i < goalObjects.Count; i++)
             {
@@ -78,6 +79,7 @@ public class Moving_Platform : MonoBehaviour
 //          ---This part of the script is somewhat complicated, and involves easily breakable code.
 //          ---edit at your own risk
 //          -----------------------------------------------------------------------------------------------------------------------------------
+
 
     /// <summary>
     /// Update the line path whenever the goal positions are updated
@@ -171,7 +173,7 @@ public class Moving_Platform : MonoBehaviour
         prevGoalListLength = goalObjects.Count;
         
     }
-
+#if UNITY_EDITOR
     public void AddNewGoal(){
         if(!goalPosPrefab){
             Debug.LogError("Can't add goal pos because no goal position prefab is connected.\nPlease drag the prefab into the goalPosPrefab field");
@@ -183,5 +185,8 @@ public class Moving_Platform : MonoBehaviour
         Undo.RegisterCreatedObjectUndo(obj, "Create GameObject");
         goalObjects.Add(obj);
         //OnValidate();
+        EditorUtility.SetDirty(this);
     }
+#endif
+
 }
