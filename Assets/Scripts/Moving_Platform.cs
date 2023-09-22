@@ -13,18 +13,23 @@ public class Moving_Platform : MonoBehaviour
     private List<Transform> goalPositions = new List<Transform>();
     //the current goal this platform is moving to
     [SerializeField]private Transform currentGoal;
+    //this object's velocity in the previous frame
+    private Vector2 vel = Vector2.zero;
     //the index of the current goal
     private int currentGoalIndex;
     private int prevGoalListLength = -1;
     [Header("DO NOT Change these fields\nJust press the button below to add a new goal position to the moving platform")]
     [SerializeField, Tooltip("the holder for all goal positions")]private Transform goalsHolder;
     [SerializeField, Tooltip("the goal position prefab")]private GameObject goalPosPrefab;
+    [SerializeField, Tooltip("the parent transform to set as parent of riding objects")]private Transform parentTransform;
     //private LineRenderer startMoveLine;
   
     // Start is called before the first frame update
     void Start()
     {
-
+        if(!parentTransform){
+            parentTransform = transform;
+        }
         if(goalObjects == null || goalObjects.Count == 0)
         {
             Debug.LogWarning("NO GOAL POSITIONS HAVE BEEN SET");
@@ -70,8 +75,29 @@ public class Moving_Platform : MonoBehaviour
             }
             currentGoal = goalPositions[currentGoalIndex];
         }
+        Vector3 oldPos = transform.position;
         transform.position = Vector3.MoveTowards(transform.position, currentGoal.position, moveSpeed * Time.fixedDeltaTime);
+        Vector3 vel3D = transform.position - oldPos;
+        vel = new Vector2(transform.position.x - oldPos.x, transform.position.y - oldPos.y) / Time.fixedDeltaTime;
     }
+
+    /// <summary>
+    /// Returns this moving platform's velocity
+    /// </summary>
+    /// <returns>the distance this platform moved this past frame</returns>
+    public Vector2 GetVel(){
+        return vel;
+    }
+
+    /// <summary>
+    /// Gets the parent transform to set as child of objects riding this platform
+    /// </summary>
+    /// <returns></returns>
+    public Transform GetParentTransform(){
+        return parentTransform;
+    }
+
+    
 
 //          -----------------------------------------------------------------------------------------------------------------------------------
 //          ---If you are viewing this as part of the VGDC into to unity exercises, 
