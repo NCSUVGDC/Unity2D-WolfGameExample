@@ -28,12 +28,14 @@ public class GoalPosVisual : MonoBehaviour
         {
             return;
         }
-#endif
+
         if (movingObject)
         {
             movingObject.UpdatePositions();
         }
+#endif
     }
+
 
     public void HideRenderers()
     {

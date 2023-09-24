@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     bool DashReady = false;
     float dashTime = 0;
     float dashRefresh = 0;
+    private bool ridingMovingPlatform = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,29 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(MovementInput.x * MovementSpeed, Mathf.Clamp(rb.velocity.y, -maxFallSpeed, maxFallSpeed)), Time.fixedDeltaTime * 10); 
         }
 
-        isGrounded = Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 3));
+
+        RaycastHit2D groundedBox = Physics2D.Linecast(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), ~(1 << 3));
+        Debug.DrawLine(this.transform.position, this.transform.position + new Vector3(0, -1.1f, 0), Color.red);
+        isGrounded = groundedBox;
+        if(isGrounded){
+            Moving_Platform platformScript = groundedBox.transform.GetComponentInChildren<Moving_Platform>();
+            if(platformScript){
+                transform.parent = platformScript.GetParentTransform();
+                ridingMovingPlatform = true;
+            }
+            else{
+                if(ridingMovingPlatform){
+                    ridingMovingPlatform = false;
+                    transform.parent = null;
+                }
+            }
+        }
+        else{
+            if(ridingMovingPlatform){
+                ridingMovingPlatform = false;
+                transform.parent = null;
+            }
+        }
         /**
         if (isGrounded)
         {
