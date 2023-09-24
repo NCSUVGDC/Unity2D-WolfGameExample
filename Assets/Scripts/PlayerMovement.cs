@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("standard movement speed")] float MovementSpeed = 10;
     [SerializeField, Tooltip("dashing movement speed")] float DashSpeed = 20;
     [SerializeField, Tooltip("the max vertical move speed")] float maxFallSpeed = 10;
-    [SerializeField, Tooltip("The force applied during a jump")] float JumpForce = 10;
+    [SerializeField, Tooltip("The force applied during a jump")] float JumpForce = 20;
     [SerializeField, Tooltip("The duration of a dash")] float DashDuration = 0.2f;
     [SerializeField, Tooltip("The cooldown of a dash")] float DashCooldown = 0.5f;
     private Animator animator;
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     bool DashReady = false;
     float dashTime = 0;
     float dashRefresh = 0;
-    bool dashing = false;
+    float bounceTime = 0;
     private bool ridingMovingPlatform = false;
 
     // Start is called before the first frame update
@@ -34,18 +34,28 @@ public class PlayerMovement : MonoBehaviour
       //  rb.AddForce(MovementInput * MovementSpeed, ForceMode2D.Force);
         if (dashTime > 0)
         {
-            rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(MovementDirection.x * DashSpeed,  Mathf.Clamp(rb.velocity.y, 0, maxFallSpeed)), Time.fixedDeltaTime * 10);
+            rb.AddForce(new Vector2(MovementDirection.x * DashSpeed * 10, 0));
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -DashSpeed, DashSpeed), Mathf.Clamp(rb.velocity.y, 0, maxFallSpeed));
             dashTime -= Time.deltaTime;
         }
         else
         {
-            if (dashing)
-            {
-                dashing = false;
-                dashTime = 0;
-            }
+            dashTime = 0;
             MovementDirection.x = MovementInput.x;
-            rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(MovementDirection.x * MovementSpeed, Mathf.Clamp(rb.velocity.y, -maxFallSpeed, maxFallSpeed)), Time.fixedDeltaTime * 10); 
+
+            rb.AddForce(new Vector2(MovementDirection.x * MovementSpeed * 5, 0));
+
+            if (bounceTime > 0)
+                bounceTime -= Time.deltaTime;
+            else
+            {
+                bounceTime = 0;
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -maxFallSpeed, Mathf.Infinity));
+
+                // Slow player significantly when not moving
+                if (MovementInput.x == 0 || Mathf.Abs(rb.velocity.x) > MovementSpeed)
+                    rb.AddForce(new Vector2(-rb.velocity.x * 5, 0));
+            }
         }
 
 
@@ -80,18 +90,6 @@ public class PlayerMovement : MonoBehaviour
         }
         //note from max - Carson F Cole bad at video games!
         //mote from max 2 - we need to vote to end the VGDC more often, Jack can only vote to keep it around so many times
-        /**
-        if (isGrounded)
-        {
-            rb.sharedMaterial.friction = 2;
-            rb.sharedMaterial = rb.sharedMaterial;
-            AirJumpReady = true;
-        } else
-        {
-            rb.sharedMaterial.friction = 0;
-            rb.sharedMaterial = rb.sharedMaterial;
-        }
-        */
 
         if (dashRefresh > 0)
             dashRefresh -= Time.deltaTime;
@@ -100,10 +98,23 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void Bounce(Vector2 forceVector)
+    {
+        ResetDash();
+        ResetAirJump();
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -MovementSpeed, MovementSpeed), rb.velocity.y);
+
+        // If the bounce gives significant upward velocity, reset vertical speed first
+        if (forceVector.normalized.y > 0.3)
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+
+        rb.AddForce(forceVector, ForceMode2D.Impulse);
+        bounceTime = 0.1f;
+    }
+
     public void ResetDash()
     {
         dashTime = 0;
-        dashing = false;
         DashReady = true;
     }
 
@@ -156,7 +167,6 @@ public class PlayerMovement : MonoBehaviour
                 MovementDirection.x = animator.GetBool("FacingRight") ? 1 : -1;
 
             DashReady = false;
-            dashing = true;
             dashTime = DashDuration;
             dashRefresh = DashCooldown;
         }

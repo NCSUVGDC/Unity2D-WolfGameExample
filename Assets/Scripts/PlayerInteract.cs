@@ -55,13 +55,15 @@ public class PlayerInteract : MonoBehaviour
                 break;
             case "EnemyHead":
                 Destroy(other.transform.root.gameObject);
-                this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, 10);
+                this.GetComponent<PlayerMovement>().Bounce(Vector2.up * 10);
                 money += 3;
                 moneyText.UpdatePoints(money);
                 break;
             case "Bouncy":
-                this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, 30);
-                this.GetComponent<PlayerMovement>().ResetDash();
+                this.GetComponent<PlayerMovement>().Bounce(other.transform.up * 25);
+                break;
+            case "Refresher":
+                other.GetComponent<Refresher>().Collect();
                 this.GetComponent<PlayerMovement>().ResetAirJump();
                 break;
         
