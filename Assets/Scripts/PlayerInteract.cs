@@ -59,6 +59,11 @@ public class PlayerInteract : MonoBehaviour
                 money += 3;
                 moneyText.UpdatePoints(money);
                 break;
+            case "Bouncy":
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, 30);
+                this.GetComponent<PlayerMovement>().ResetDash();
+                this.GetComponent<PlayerMovement>().ResetAirJump();
+                break;
         
         }
     }
