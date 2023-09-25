@@ -395,6 +395,7 @@ MonoBehaviour:
   hidePathOnStartup: 1
   snapToFirstPosOnStartup: 1
   currentGoal: {fileID: 0}
+  parentTransform: {fileID: 0}
   goalsHolder: {fileID: 0}
   goalPosPrefab: {fileID: 0}
 --- !u!1 &5031067239583544481

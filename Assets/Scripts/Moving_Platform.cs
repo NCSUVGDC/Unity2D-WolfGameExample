@@ -18,10 +18,11 @@ public class Moving_Platform : MonoBehaviour
     //the index of the current goal
     private int currentGoalIndex;
     private int prevGoalListLength = -1;
-    [Header("DO NOT Change these fields\nJust press the button below to add a new goal position to the moving platform")]
+    [SerializeField, Tooltip("the parent transform to set as parent of riding objects. \n by default, will be this transform")]private Transform parentTransform;
+    [Header("DO NOT Change these fields")]
     [SerializeField, Tooltip("the holder for all goal positions")]private Transform goalsHolder;
     [SerializeField, Tooltip("the goal position prefab")]private GameObject goalPosPrefab;
-    [SerializeField, Tooltip("the parent transform to set as parent of riding objects")]private Transform parentTransform;
+    
     //private LineRenderer startMoveLine;
   
     // Start is called before the first frame update
