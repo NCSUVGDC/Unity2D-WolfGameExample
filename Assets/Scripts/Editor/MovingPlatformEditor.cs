@@ -11,7 +11,6 @@ public class MovingPlatformEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
         Moving_Platform mp = (Moving_Platform)target;
         if (GUILayout.Button("Add Movement Goal"))
         {
@@ -20,6 +19,8 @@ public class MovingPlatformEditor : Editor
                 mp.AddNewGoal();
             }
         }
+        base.OnInspectorGUI();
+        
         // if (GUILayout.Button("Display Paths"))
         // {
         //     if (zpg.IsSceneBound())
