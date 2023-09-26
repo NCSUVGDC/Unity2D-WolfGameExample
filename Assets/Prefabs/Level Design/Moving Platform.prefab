@@ -398,6 +398,7 @@ MonoBehaviour:
   parentTransform: {fileID: 0}
   goalsHolder: {fileID: 0}
   goalPosPrefab: {fileID: 0}
+  parentTransform: {fileID: 0}
 --- !u!1 &5031067239583544481
 GameObject:
   m_ObjectHideFlags: 0

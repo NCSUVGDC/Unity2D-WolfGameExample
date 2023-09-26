@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - EndLevel
   - EnemyHead
+  - Bouncy
+  - Refresher
   layers:
   - Default
   - TransparentFX
